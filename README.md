@@ -43,6 +43,10 @@
 
 <hr>
 
+# [LART] Running in Docker
+
+- `docker run --privileged -p 8765:8765 realsense_ros`
+
 # ROS1 and ROS2 Legacy
 
 <details>
