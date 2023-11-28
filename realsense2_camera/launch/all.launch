@@ -1,0 +1,6 @@
+<launch>
+    <include file="$(find-pkg-share realsense2_camera)/launch/rs_launch.py" />
+    <include file="$(find-pkg-share foxglove_bridge)/launch/foxglove_bridge_launch.xml">
+        <arg name="port" value="8765"/>
+    </include>
+</launch>
