@@ -20,18 +20,17 @@ RUN mkdir -p /etc/apt/keyrings && \
 
 # init rosdep
 RUN rosdep update
+RUN apt update
+
+RUN apt install ros-humble-foxglove-bridge -y
 
 # Create a workspace and copy the package
 RUN mkdir -p /ros2_ws/src
 COPY ./ /ros2_ws/src
 WORKDIR /ros2_ws
 
-RUN apt update && apt upgrade -y
-
 # Install dependencies
 RUN rosdep install -i --from-path src --rosdistro humble --skip-keys=librealsense2 -y
-
-RUN apt install ros-humble-foxglove-bridge -y
 
 # Build the package
 RUN /bin/bash -c "source /opt/ros/humble/setup.bash && \

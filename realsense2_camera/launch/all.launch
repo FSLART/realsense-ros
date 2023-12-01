@@ -1,6 +1,10 @@
 <launch>
+    <!-- launch the realsense -->
     <include file="$(find-pkg-share realsense2_camera)/launch/rs_launch.py" />
+    <!-- launch the foxglove bridge -->
     <include file="$(find-pkg-share foxglove_bridge)/launch/foxglove_bridge_launch.xml">
         <arg name="port" value="8765"/>
     </include>
+    <!-- publish a static tf to the base_link -->
+    <node pkg="tf2_ros" exec="static_transform_publisher" name="car_to_camera_link" args="0 0 0 0 0 0 base_link camera_link" />
 </launch>
